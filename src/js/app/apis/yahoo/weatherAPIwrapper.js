@@ -63,7 +63,17 @@ define(function() {
 	function getWeather(woeid)
 	{
 		var queryUrl = _queryUrl+woeid+'&format=json';
-		_xmlhttp.open("GET",queryUrl,true);
+
+		// CORS
+		if ("withCredentials" in _xmlhttp){
+        _xmlhttp.open("GET", url, true);
+    } else if (typeof XDomainRequest != "undefined"){ // IE
+        _xmlhttp = new XDomainRequest();
+        _xmlhttp.open("GET", url);
+    } else {
+        _xmlhttp = null;
+    }
+
 		_xmlhttp.send();
 	}
 

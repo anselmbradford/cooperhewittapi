@@ -63,7 +63,17 @@ define(function() {
 	function getPlaceInfo(lat,lng)
 	{
 		var queryUrl = _queryUrl+lat+'%2C'+lng+'"%20and%20gflags%3D"R"&format=json';
-		_xmlhttp.open("GET",queryUrl,true);
+
+		// CORS
+		if ("withCredentials" in _xmlhttp){
+        _xmlhttp.open("GET", url, true);
+    } else if (typeof XDomainRequest != "undefined"){ // IE
+        _xmlhttp = new XDomainRequest();
+        _xmlhttp.open("GET", url);
+    } else {
+        _xmlhttp = null;
+    }
+
 		_xmlhttp.send();
 	}
 

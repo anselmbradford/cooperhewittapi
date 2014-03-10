@@ -13,8 +13,10 @@ define(function() {
 
 	function init()
 	{
-		_queryUrl = "https://api.collection.cooperhewitt.org/rest/?method=";
+		_queryUrl = "http://coraldata.org/cooperhewittapi/chndm_proxy.php?method=";
 		_accessToken = "ACCESS_TOKEN"; // placeholder for access token
+
+		function createCORSRequest(method, url){
 
 		// set up XHR
 		if (window.XMLHttpRequest)
@@ -81,8 +83,17 @@ define(function() {
 			}
 		}
 		var queryUrl = _queryUrl+query+"&access_token="+_accessToken+paramStr+"&page="+_page;
-		console.log("queryUrl",queryUrl);
-		_xmlhttp.open("GET",queryUrl,true);
+
+		// CORS
+		if ("withCredentials" in _xmlhttp){
+        _xmlhttp.open("GET", url, true);
+    } else if (typeof XDomainRequest != "undefined"){ // IE
+        _xmlhttp = new XDomainRequest();
+        _xmlhttp.open("GET", url);
+    } else {
+        _xmlhttp = null;
+    }
+
 		_xmlhttp.send();
 	}
 
