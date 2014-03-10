@@ -6,10 +6,9 @@ define(['jquery',
 				'app/apis/yahoo/placesAPIwrapper',
 				'app/apis/yahoo/weatherAPIwrapper',
 				'app/apis/geolocation',
-				'app/alert-manager',
 				'async!https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false!callback',
 				'domReady!'],
-				function ($,weatherVO,CallbackVO,chndm,places,weather,geo,alert) {
+				function ($,weatherVO,CallbackVO,chndm,places,weather,geo) {
 	'use strict';
 
 		// PRIVATE PROPERTIES
@@ -88,22 +87,9 @@ define(['jquery',
 			var geoCallBack = {
 				success:function(position,address)
 				{
-					console.log("coords",position.coords.latitude,position.coords.longitude,36.778261,-119.417932);
-
 					_calcBearings(position.coords.latitude,position.coords.longitude);
 
-					//var furthestDest = _findFurthestDestination(position.coords.latitude,position.coords.longitude);
-
-
 					_lookupWeather(position.coords.latitude,position.coords.longitude);
-
-					// TEMP
-					/*_windDirection = 100;
-					_quadrant = "SE";
-					_windSpeed = 5;
-					_setWindConditionsDisplay()
-					_lookupCooperHewitt(_NE[0]);
-					*/
 
 					_locationInput.value = address;
 				}
@@ -276,7 +262,6 @@ define(['jquery',
 				weatherCallback.load = function(evt)
 				{
 					weatherVO.init( JSON.parse(evt.target.response) );
-					console.log( "temperature",weatherVO.getTemperature(),"wind chill:",weatherVO.getWindChill(), "wind dir:",weatherVO.getWindDirection(), "wind speed:",weatherVO.getWindSpeed() );
 
 					_windDirection = weatherVO.getWindDirection();
 					_windSpeed = weatherVO.getWindSpeed();
@@ -357,116 +342,16 @@ define(['jquery',
 			{
 				var json = JSON.parse(evt.target.response);
 
-				// loop through objects
-				/*for (var j in json.objects)
-				{
-					var src = json.objects[j].images[0];
-					if (src)
-					{
-						var img=document.createElement("IMG");
-						img.src = src.z.url;
-						document.body.appendChild(img);
-					}
-					else
-					{
-						console.log( j, "image not found" );
-					}
-   				//console.log(matchList.length,matchList.toString());
-				}*/
-
-				console.log(json);
-
 				var src = json.objects[Math.floor(Math.random()*json.objects.length)].images[0];
 				if (src)
 				{
 					_posterUrl = src.z.url
-					//document.getElementById('result-img').src = src.z.url;
 					document.getElementById("image-container").style.backgroundImage = "url("+_posterUrl+")";
 				}
 			}
 
 			chndm.init().registerCallback(callback);
-			//chndm.typesGetList();
-			console.log(item['name'].replace(" ","+"));
 			chndm.searchObjects({"type":"posters","title":"American+Airlines","description":item['name'].replace(" ","+"),"i":"true"});
-		}
-
-		function lookupCooperHewitt()
-		{
-			var callback = new CallbackVO();
-			callback.load = function(evt)
-			{
-				var json = JSON.parse(evt.target.response);
-
-				// loop through objects
-				for (var j in json.objects)
-				{
-					var src = json.objects[j].images[0];
-					if (src)
-					{
-						var img=document.createElement("IMG");
-						img.src = src.z.url;
-						document.body.appendChild(img);
-					}
-					else
-					{
-						console.log( j, "image not found" );
-					}
-
-					var matchList = [];
-					var regexp = /\b[A-Z]+\b/g;
-					var desc = json.objects[j].description;
-					var match;
-					while ((match = regexp.exec(desc)) != null) {
-						if ( match[0].length > 1 &&
-							   match[0] != "AMERICAN" &&
-								 match[0] != "AIRLINES" &&
-								 match[0] != "ALL" &&
-								 match[0] != "TO" &&
-								 match[0] != "IN" &&
-								 match[0] != "AA" &&
-								 match[0] != "VIA" &&
-								 match[0] != "FLIGHT" &&
-								 match[0] != "NIGHT" &&
-								 match[0] != "DAY" &&
-								 match[0] != "OVER" &&
-								 match[0] != "THE" &&
-								 match[0] != "WORLD" &&
-								 match[0] != "AND"
-							)
-      				matchList.push(match);
-   				}
-
-   				//console.log(matchList.length,matchList.toString());
-				}
-
-				console.log(json);
-				//document.getElementById("result-img").src = json.objects[0].images[0].z.url;
-			}
-
-			chndm.init().registerCallback(callback);
-			//chndm.typesGetList();
-			chndm.searchObjects({"type":"posters","description":"AMERICAN+AIRLINES","i":"true"});
-			//chndm.searchObjects({"color":"#aabbbb","i":"true"});
-
-
-			var callBack2 = {
-				progress:function(progress)
-				{
-					console.log("loading...",progress);
-				}
-				,
-				load:function(response)
-				{
-					console.log(response);
-				}
-				,
-				error:function(evt)
-				{
-					console.log(evt);
-				}
-			}
-
 		}
 
 	return {
