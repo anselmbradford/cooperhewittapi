@@ -11,8 +11,8 @@ The opening screen. The user enters a location.
 
 The app queries the Yahoo weather API and returns wind information.
 
-![wind screen](https://raw.github.com/anselmbradford/cooperhewittapi/master/screenshots/poster.png)
+![poster screen](https://raw.github.com/anselmbradford/cooperhewittapi/master/screenshots/wind.png)
 
 The user can then view a poster that is geographically themed in the direction of the wind.
 
-![poster screen](https://raw.github.com/anselmbradford/cooperhewittapi/master/screenshots/wind.png)
+![wind screen](https://raw.github.com/anselmbradford/cooperhewittapi/master/screenshots/poster.png)
