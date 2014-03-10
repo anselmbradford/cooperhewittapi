@@ -123,6 +123,13 @@ define(['jquery',
 		{
 			var brng;
 			var quadrant;
+
+			// resets quadrant arrays
+			_NE=[],
+			_SE=[],
+			_SW=[],
+			_NW=[];
+
 			for( var d in _destinations )
 			{
 				brng = _calcRhumblines(lat,lng,_destinations[d]['lat'],_destinations[d]['lng']);
