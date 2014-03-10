@@ -47,52 +47,53 @@
     <body>
 
         <!-- Add your site or application content here -->
+        <section id="content">
+            <section id="opening-screen" class="screen">
+                <section id="tagline-container">
+                    <h1 id="tagline">
+                        <div>Travel</div> <div>where the wind</div> <div>blows...</div>
+                    </h1>
+                </section>
 
-        <section id="opening-screen" class="screen">
-            <section id="tagline-container">
-                <h1 id="tagline">
-                    <div>Travel</div> <div>where the wind</div> <div>blows...</div>
+            </section>
+
+            <section id="background-screen" class="screen">
+                <section id="loading-container">
+                    <i id="loading-icon" class="fa fa-refresh fa-spin" style="opacity:0"></i>
+                </section>
+                <section id="plane-container">
+                    <i id="plane-icon" class="fa fa-plane"></i>
+                </section>
+            </section>
+
+            <section id="weather-screen" class="screen" style="left:200%;">
+                <section id="wind-conditions">
+                    <div>Wind...</div>
+                    <span id="wind-direction-speed"></span>
+                    <span id="wind-direction-quadrant"></span>
+                </section>
+                <button id="poster-button" style="opacity:0;">
+                    Which poster?
+                    <i class="fa fa-arrow-circle-o-right"></i>
+                </button>
+            </section>
+
+            <section id="poster-screen" class="screen" style="left:200%;">
+                <section id="image-container">
+                    <img id="result-img" src="">
+                    <button id="close-btn"><i class="fa fa-times-circle"></i></button>
+                </section>
+            </section>
+
+            <section id="location-container">
+                <input type="search" id="location" placeholder="Enter your city..." />
+                <button id="save-btn"><i class="fa fa-search"></i></button>
+                <button id="locate-btn" style="display:none;">Locate me!</button>
+                <h1>
+                    <strong>From the Cooper Hewitt Museum:</strong>
+                    Discover which American Airlines poster the wind points toward.
                 </h1>
             </section>
-
-        </section>
-
-        <section id="background-screen" class="screen">
-            <section id="loading-container">
-                <i id="loading-icon" class="fa fa-refresh fa-spin" style="opacity:0"></i>
-            </section>
-            <section id="plane-container">
-                <i id="plane-icon" class="fa fa-plane"></i>
-            </section>
-        </section>
-
-        <section id="weather-screen" class="screen" style="left:200%;">
-            <section id="wind-conditions">
-                <div>Wind...</div>
-                <span id="wind-direction-speed"></span>
-                <span id="wind-direction-quadrant"></span>
-            </section>
-            <button id="poster-button" style="opacity:0;">
-                Which poster?
-                <i class="fa fa-arrow-circle-o-right"></i>
-            </button>
-        </section>
-
-        <section id="poster-screen" class="screen" style="left:200%;">
-            <section id="image-container">
-                <img id="result-img" src="">
-                <button id="close-btn"><i class="fa fa-times-circle"></i></button>
-            </section>
-        </section>
-
-        <section id="location-container">
-            <input type="search" id="location" placeholder="Enter your city..." />
-            <button id="save-btn"><i class="fa fa-search"></i></button>
-            <button id="locate-btn" style="display:none;">Locate me!</button>
-            <h1>
-                <strong>From the Cooper Hewitt Museum:</strong>
-                Discover which American Airlines poster the wind points toward.
-            </h1>
         </section>
 
         <script src="js/vendor/zepto.min.js"></script>

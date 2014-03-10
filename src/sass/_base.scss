@@ -1,7 +1,15 @@
 $light_blue: #B6CBD0;
 $dark_blue: #7B9EB9;
 
-$navbar_offset: 65;
+#content
+{
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	overflow:hidden;
+}
 
 #location-container
 {
