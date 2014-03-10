@@ -1,0 +1,197 @@
+$light_blue: #B6CBD0;
+$dark_blue: #7B9EB9;
+
+$navbar_offset: 65;
+
+#location-container
+{
+	background:$light_blue;
+	padding:10px;
+	position:fixed;
+	z-index:9999;
+	bottom:0;
+	width:100%;
+	@include box-sizing(border-box);
+	text-align:center;
+
+	input {
+    -webkit-appearance: none;
+	}
+
+	button
+	{
+		@include border-radius(6px);
+		border:1px solid $dark_blue;
+		background:$light_blue;
+		border-collapse:collapse;
+	}
+
+	button:hover
+	{
+		background:$dark_blue;
+	}
+
+	h1
+	{
+		font-weight:normal;
+		font-size:12px;
+		margin-top:10px;
+		margin-bottom:0px;
+		strong{
+			font-size:14px;
+			display:block;
+			font-weight:bold;
+		}
+	}
+}
+
+.screen
+{
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+}
+
+#weather-screen
+{
+	left:100%;
+}
+
+#background-screen
+{
+	z-index:9996;
+
+	#plane-icon
+	{
+		font-size:273.375px;
+		position:absolute;
+		top: 50%;
+		left: 50%;
+		margin-left: -107.5px;
+		margin-top: -136.5px;
+		color:$light_blue;
+		z-index:9998;
+		outline-width: 0px;
+	}
+
+	#loading-icon
+	{
+		color:$dark_blue;
+		position:absolute;
+		top:10px;
+		left:10px;
+	}
+
+	#plane-container
+	{
+		position:absolute;
+		top:50%;
+		left:50%;
+		margin-top:-32.5px;
+	}
+}
+
+#tagline-container
+{
+	text-align:center;
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-left:-96px;
+	margin-top:-175.5px;
+
+	#tagline
+	{
+		font-weight:normal;
+		font-family: 'Sacramento', cursive;
+
+		div
+		{
+			line-height:81px;
+			position:relative;
+			z-index:9999;
+		}
+
+		div:nth-of-type(1)
+		{
+			font-size:81px;
+		}
+		div:nth-of-type(2)
+		{
+			font-size:36px;
+		}
+		div:nth-of-type(3)
+		{
+			font-size:81px;
+		}
+	}
+}
+
+#weather-screen
+{
+	padding:20px;
+	z-index:9997;
+
+	button
+	{
+		position:absolute;
+		top:10px;
+		right:10px;
+		@include border-radius(6px);
+		border:1px solid $dark_blue;
+		background:$light_blue;
+		border-collapse:collapse;
+	}
+
+	button:hover
+	{
+		background:$dark_blue;
+	}
+}
+
+#wind-conditions
+{
+	font-size:64px;
+	font-family: 'Sacramento', cursive;
+	text-align:center;
+	min-width:280px;
+
+	div:nth-of-type(1)
+	{
+		font-size:81px;
+	}
+
+	span
+	{
+		font-size:36px;
+	}
+}
+
+#poster-screen
+{
+	z-index:9998;
+	bottom:99px;
+
+	#image-container
+	{
+		background-color:#fff;
+		height:100%;
+		@include single-box-shadow;
+		@include background-size(contain);
+		background-repeat:no-repeat;
+		background-position:center top;
+		text-align:right;
+
+		button
+		{
+			margin:10px;
+			@include border-radius(6px);
+			border:1px solid $dark_blue;
+			background:$light_blue;
+			border-collapse:none;
+			font-size:16px;
+		}
+	}
+}

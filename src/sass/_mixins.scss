@@ -1,0 +1,27 @@
+$default_duration: 1000ms;
+
+.flip
+{
+    @include rotateY(180deg);
+    @include transition(transform $default_duration);
+    @include backface-visibility( hidden );
+}
+
+.unflip
+{
+    @include rotateY(0deg);
+    @include transition(transform $default_duration);
+    @include backface-visibility( hidden );
+}
+
+.blur
+{
+    @include filter(blur(4px));
+    @include transition(filter $default_duration);
+}
+
+.unblur
+{
+    @include filter(blur(0px));
+    @include transition(filter $default_duration);
+}
