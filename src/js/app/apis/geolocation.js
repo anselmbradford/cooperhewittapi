@@ -31,7 +31,7 @@ define(function() {
 		var geocoder = new google.maps.Geocoder();
     geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
-      	var latlng = {'coords':{'latitude':results[0].geometry.location.d, 'longitude':results[0].geometry.location.e} };
+      	var latlng = {'coords':{'latitude':results[0].geometry.location.lat(), 'longitude':results[0].geometry.location.lng()} };
       	_callBack.success(latlng,results[0].formatted_address);
       } else {
         console.log("Geocode was not successful for the following reason: " + status);
