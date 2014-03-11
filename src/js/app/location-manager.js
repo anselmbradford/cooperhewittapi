@@ -42,7 +42,9 @@ define(['jquery',
 
 		var _generalDestinations = [
 						{'name':'black sphere'},
-						{'name':'WINTER SPORTS'}
+						{'name':'WINTER SPORTS'},
+						{'name':'abstract man wearing'},
+						{'name':'abstract man wearing'}
 					];
 
 		var _NE=[],
@@ -302,7 +304,24 @@ define(['jquery',
 					else if (_windDirection == 270) _quadrant = "W";
 
 					if (quadrant.length == 0)
-						quadrant.push(_generalDestinations[0]);
+					{
+						if (_quadrant == "W" || _quadrant == "NW")
+						{
+							quadrant.push(_generalDestinations[0]);
+						}
+						else if (_quadrant == "N" || _quadrant == "NE")
+						{
+							quadrant.push(_generalDestinations[1]);
+						}
+						else if (_quadrant == "E" || _quadrant == "SE")
+						{
+							quadrant.push(_generalDestinations[2]);
+						}
+						else if (_quadrant == "S" || _quadrant == "SW")
+						{
+							quadrant.push(_generalDestinations[3]);
+						}
+					}
 					var item = quadrant[Math.floor(Math.random()*quadrant.length)];
 
 					_setWindConditionsDisplay();
@@ -358,7 +377,7 @@ define(['jquery',
 			}
 
 			chndm.init().registerCallback(callback);
-			chndm.searchObjects({"type":"posters","title":"American+Airlines","description":item['name'].replace(" ","+"),"i":"true"});
+			chndm.searchObjects({"type":"posters","title":"American+Airlines","description":item['name'].replace(new RegExp(" ", 'g'), "+"),"i":"true"});
 		}
 
 	return {
