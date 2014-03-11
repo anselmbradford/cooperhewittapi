@@ -351,7 +351,7 @@ define(['jquery',
 				{  outlineWidth: (_windDirection-45) },
 				{
 			    step: function(now,fx) {
-			      $(this).css('-webkit-transform','rotate('+now+'deg)');
+			      $(this).css({transform:'rotate('+now+'deg)'});
 			    },
 			    duration:'slow'
 				},'swing');
