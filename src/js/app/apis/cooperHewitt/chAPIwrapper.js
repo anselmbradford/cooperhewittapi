@@ -16,8 +16,6 @@ define(function() {
 		_queryUrl = "http://coraldata.org/cooperhewittapi/chndm_proxy.php?method=";
 		_accessToken = "ACCESS_TOKEN"; // placeholder for access token
 
-		function createCORSRequest(method, url){
-
 		// set up XHR
 		if (window.XMLHttpRequest)
 	  {// code for IE7+, Firefox, Chrome, Opera, Safari
