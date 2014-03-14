@@ -66,10 +66,10 @@ define(function() {
 
 		// CORS
 		if ("withCredentials" in _xmlhttp){
-        _xmlhttp.open("GET", url, true);
+        _xmlhttp.open("GET", queryUrl, true);
     } else if (typeof XDomainRequest != "undefined"){ // IE
         _xmlhttp = new XDomainRequest();
-        _xmlhttp.open("GET", url);
+        _xmlhttp.open("GET", queryUrl);
     } else {
         _xmlhttp = null;
     }

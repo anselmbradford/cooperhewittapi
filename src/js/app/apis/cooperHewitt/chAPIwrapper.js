@@ -1,6 +1,6 @@
 // manages geolocation
 define(function() {
-  'use strict';
+	'use strict';
 
 	var _callBack; // callback object to pass events to
 	var _xmlhttp; // the XHR object to make calls with
@@ -18,15 +18,15 @@ define(function() {
 
 		// set up XHR
 		if (window.XMLHttpRequest)
-	  {// code for IE7+, Firefox, Chrome, Opera, Safari
-	  	_xmlhttp=new XMLHttpRequest();
-	  }
+		{// code for IE7+, Firefox, Chrome, Opera, Safari
+			_xmlhttp=new XMLHttpRequest();
+		}
 		else
-	  {// code for IE6, IE5
-	  	_xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-	  }
+		{// code for IE6, IE5
+			_xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
 
-	  _xmlhttp.addEventListener("progress", _updateProgress, false);
+		_xmlhttp.addEventListener("progress", _updateProgress, false);
 		_xmlhttp.addEventListener("load", _transferComplete, false);
 		_xmlhttp.addEventListener("error", _transferFailed, false);
 		_xmlhttp.addEventListener("abort", _transferCanceled, false);
@@ -47,7 +47,7 @@ define(function() {
 	// ASYNC EVENT HANDLERS
 	function _updateProgress(evt)
 	{
-    if (_callBack.progress)
+		if (_callBack.progress)
 			_callBack.progress(evt);
 	}
 
@@ -84,13 +84,13 @@ define(function() {
 
 		// CORS
 		if ("withCredentials" in _xmlhttp){
-        _xmlhttp.open("GET", url, true);
-    } else if (typeof XDomainRequest != "undefined"){ // IE
-        _xmlhttp = new XDomainRequest();
-        _xmlhttp.open("GET", url);
-    } else {
-        _xmlhttp = null;
-    }
+				_xmlhttp.open("GET", queryUrl, true);
+		} else if (typeof XDomainRequest != "undefined"){ // IE
+				_xmlhttp = new XDomainRequest();
+				_xmlhttp.open("GET", queryUrl);
+		} else {
+				_xmlhttp = null;
+		}
 
 		_xmlhttp.send();
 	}
